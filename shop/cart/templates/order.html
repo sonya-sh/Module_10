@@ -1,0 +1,73 @@
+{% extends 'cart/detail.html' %}
+{% load static %}
+{% block title %}
+<title>
+    Оформление
+</title>
+{% endblock %}
+
+{% block content%}
+<div class="block-names-product">
+    <h1>Оформление заказа </h1>
+</div>
+
+<style>
+    .th{
+        color: red;
+    }
+
+
+</style>
+<table class="cart" width="100%" cols="6" cellpadding="5">
+    <thead>
+    <tr bgcolor="#FAEBD7">
+        <th></th>
+        <th>Товар</th>
+        <th align="center">Количество</th>
+        <th>Удалить</th>
+        <th>Цена за ед.</th>
+        <th>Общая стоимость</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in cart %}
+    {% with product=item.product %}
+    <tr bgcolor="#FFFAFA">
+        <td>
+            <img src="{{product.link}}"
+                 style="width: 20%">
+        </td>
+        <td align="left">{{product.name}}</td>
+        <td align="center">{{item.quantity}}</td>
+        <td align="left"><a href="{% url 'cart:cart_remove' product.id%}">
+            <button type="button" class="btn-close" aria-label="Close"></button>
+        </a></td>
+        <td class="num" align="left">{{item.price}}</td>
+        <td class="num" align="left">{{item.total_price}}</td>
+    </tr>
+    {% endwith %}
+    {% endfor %}
+    <tr class="total">
+
+        <td bgcolor="#FDF5E6">Всего</td>
+        <td bgcolor="#FDF5E6" colspan="4"></td>
+        <td bgcolor="#FDF5E6" class="num">{{cart.get_total_price}}</td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<div class="str_order">
+    <form name="order" method="post" action="{% url 'cart:order' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div>
+
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <button class="btn btn-primary"  type="submit" value="order">Оформить заказ</button>
+                </div>
+
+        </div>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'catalog/base.html' %}
+
+{% block title %}
+<title>
+    {{product.name}}
+</title>
+{% endblock %}
+
+{% block content%}
+
+<div class="card mb-3" style="max-width: 100%;">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="{{product.link}}" class="img-fluid rounded-start" alt="..." style="width:80%">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{product.name}}</h5>
+                <span class="gray">Код товара: {{product.id}}</span>
+                <div class="features">
+                    <h4>Характеристики:</h4>
+                    <span class="gray">Тип:</span> <span>{{product.category_id.category}}</span><br>
+                    <span class="gray">Цвет:</span> <span>{{product.color}}</span><br>
+                    <span class="gray">Цена:</span> <span>{{product.price}} руб.</span><br>
+                </div>
+                <h4>Описание:</h4>
+                <p>{{product.description}}
+                </p>
+
+                <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                    {{ cart_product_form }}
+                    {% csrf_token %}
+                    <input class="shopping-cart-button" type="submit" value="в корзину">
+                </form>
+
+                <p class="card-text"><small class="text-muted">Last updated : {{product.update_on}}</small></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
