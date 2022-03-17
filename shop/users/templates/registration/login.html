@@ -1,26 +1,26 @@
 {% extends 'base2.html' %}
-        {% block content %}
-        <div style="height: 500px;">
-            <h2>
-                Приветствуем Вас!
-            </h2>
-            <form name="register" method="post" action="{% url 'login' %}">
-                {% csrf_token %}
-                <p> Вход в систему:</p>
-                {{ form.as_p }}
-                <div>
-                    <button type="submit" value="Log in">
-                        <p>Войти</p>
-                    </button>
-                </div>
-            </form>
-            <div>
-                <p>
-                    Вы еще не зарегистрированы в системе?
-                </p>
-                 <button style="float: left" value="sign_up">
-                <a href="{% url 'sign_up' %}">Присоединяйтесь!</a>
+{% block content %}
+<div style="height: 500px;">
+    <form name="register" method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <h4> Вход в систему:</h4>
+        <br>
+        {{ form.as_p }}
+        <div>
+            <button type="submit" value="Log in" class="btn btn-primary">
+                Войти
             </button>
-            </div>
         </div>
-        {% endblock %}
+    </form>
+    <div>
+        <button type="button" class="btn btn-light" value="sign_up">
+            <a href="{% url 'sign_up' %}">
+                Зарегистрироваться
+            </a>
+        </button>
+    </div>
+</div>
+
+
+{% endblock %}
+

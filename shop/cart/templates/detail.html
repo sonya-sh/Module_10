@@ -10,9 +10,9 @@
 <div class="block-names-product">
     <h1>Ваша корзина </h1>
 </div>
-<table class="cart" cols="6" width="100%" rules="cols" cellpadding="5">
+<table class="cart" cols="6" width="100%" cellpadding="5">
     <thead>
-    <tr bgcolor="#FAEBD7">
+    <tr bgcolor="#778899">
         <th></th>
         <th>Товар</th>
         <th>Количество</th>
@@ -32,10 +32,25 @@
             >
         </td>
         <td>{{product.name}}</td>
-        <td>{{item.quantity}}
 
+
+        <td>
+
+            <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                {{ cart_product_form }}
+                {% csrf_token %}
+                <div class="d-grid gap-2 d-md-block">
+                    <div class="number" data-step="1" data-min="1" data-max="100">
+                        <input class="number-text" type="text" size="3" name="count" value="{{item.quantity}}">
+                        <button class="number-minus">−</button>
+                        <button class="number-plus">+</button>
+                    </div>
+                </div>
+            </form>
 
         </td>
+
+
         <td><a href="{% url 'cart:cart_remove' product.id%}">
             <button type="button" class="btn-close" aria-label="Close"></button>
         </a></td>
@@ -45,9 +60,9 @@
     {% endwith %}
     {% endfor %}
     <tr class="total">
-        <td bgcolor="#FDF5E6">Всего</td>
-        <td bgcolor="#FDF5E6" colspan="4"></td>
-        <td bgcolor="#FDF5E6" class="num">{{cart.get_total_price}}</td>
+        <td bgcolor="#D3D3D3">Всего</td>
+        <td bgcolor="#D3D3D3" colspan="4"></td>
+        <td bgcolor="#D3D3D3" class="num">{{cart.get_total_price}}</td>
     </tr>
     </tbody>
 </table>

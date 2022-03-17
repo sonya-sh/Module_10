@@ -11,16 +11,10 @@
     <h1>Оформление заказа </h1>
 </div>
 
-<style>
-    .th{
-        color: red;
-    }
 
-
-</style>
 <table class="cart" width="100%" cols="6" cellpadding="5">
     <thead>
-    <tr bgcolor="#FAEBD7">
+    <tr bgcolor="#778899">
         <th></th>
         <th>Товар</th>
         <th align="center">Количество</th>
@@ -49,9 +43,9 @@
     {% endfor %}
     <tr class="total">
 
-        <td bgcolor="#FDF5E6">Всего</td>
-        <td bgcolor="#FDF5E6" colspan="4"></td>
-        <td bgcolor="#FDF5E6" class="num">{{cart.get_total_price}}</td>
+        <td bgcolor="#D3D3D3">Всего</td>
+        <td bgcolor="#D3D3D3" colspan="4"></td>
+        <td bgcolor="#D3D3D3" class="num">{{cart.get_total_price}}</td>
     </tr>
     </tbody>
 </table>
@@ -62,9 +56,9 @@
         {{ form.as_p }}
         <div>
 
-                <div class="d-grid gap-2 col-6 mx-auto">
-                    <button class="btn btn-primary"  type="submit" value="order">Оформить заказ</button>
-                </div>
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button class="btn btn-primary" type="submit" value="order">Оформить заказ</button>
+            </div>
 
         </div>
     </form>

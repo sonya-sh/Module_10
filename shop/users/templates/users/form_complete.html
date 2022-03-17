@@ -2,7 +2,9 @@
 
 {% block content %}
 <h1>
-    Регистрация прошла успешно
+    Регистрация прошла успешно.
 </h1>
-<p><a href="{% url 'login' %}">Войти</a></p>
+<button type="submit" value="Log in" class="btn btn-light">
+    <a href="{% url 'login' %}"> Войти </a>
+</button>
 {% endblock %}

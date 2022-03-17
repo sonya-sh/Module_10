@@ -12,14 +12,14 @@ from django.contrib.auth import get_user_model
 #    birth_date = forms.CharField(max_length=20)
 
 class RegistrForm(forms.Form):
-    username = forms.CharField(label='Ваш логин')
-    name = forms.CharField(max_length=20)
-    surname = forms.CharField(max_length=20)
+    username = forms.CharField(label='Логин')
+    name = forms.CharField(max_length=20, label='Имя')
+    surname = forms.CharField(max_length=20, label='Фамилия')
     password = forms.CharField(label="Пароль", widget=forms.PasswordInput)
     password_1 = forms.CharField(label="Повторите пароль", widget=forms.PasswordInput)
     email = forms.EmailField(max_length=254, help_text='This field is required')
-    phone_number = forms.CharField(max_length=20)
-    birth_date = forms.CharField(max_length=20)
+    phone_number = forms.CharField(max_length=20, label='Номер телефона')
+    birth_date = forms.CharField(max_length=20, label='Дата рождения')
 
 
 class CustomUserCreationForm(UserCreationForm):

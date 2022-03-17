@@ -37,7 +37,7 @@ def cart_add(request, product_id):
             cart_base = CartItem.objects.get(id_user=request.user.id)
             cart_base.products = json.dumps(cart.cart)
             cart_base.save()
-    return redirect('/catalog/category')
+    return redirect('/cart/')
 
 
 def cart_remove(request, product_id):
@@ -99,3 +99,4 @@ def dec_order(request):
         cart_base = CartItem.objects.get(id_user=request.user.id)
         cart.cart = json.loads(cart_base.products)
     return render(request, 'order.html', context={'form': form, 'cart': cart})
+
