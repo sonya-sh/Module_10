@@ -1,22 +1,14 @@
-from django.shortcuts import render
 from .models import CustomUser
 from .forms import RegistrForm
-from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from catalog.models import Product
+from order.models import Order
+from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
-
-from .forms import CustomUserCreationForm
+import json
 
 
 def start(response):
     return render(response, "users/start.html")
-
-
-class SignUpView(CreateView):
-    form_class = CustomUserCreationForm
-    success_url = reverse_lazy('Main')
-    template_name = 'users/registr.html'
 
 
 def sign_up(request):
@@ -60,3 +52,24 @@ def sign_in(request):
 def logout_user(request):
     logout(request)
     return render(request, 'users/login.html')
+
+
+def history(request):
+    sell_base = Order.objects.filter(id_user=request.user.id)
+    if sell_base:
+        sell = Order.objects.filter(id_user=request.user.id)
+    else:
+        sell = None
+    return render(request, 'users/history.html', context={'sell': sell})
+
+
+def detail_order(request, order_id):
+    order = Order.objects.get(id=order_id)
+    cart = json.loads(order.structure)
+    products = Product.objects.filter(id__in=cart.keys())
+    for product in products:
+        product.value = cart[str(product.id)]['quantity']
+    cart['cost'] = order.cost
+    return render(request, 'users/detail_order.html', context={'order': order, 'products': products, 'cart': cart})
+
+

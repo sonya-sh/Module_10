@@ -1,9 +1,7 @@
 {% extends 'base2.html' %}
 
 {% block content %}
-<h2>
-    Приветствуем Вас!
-</h2>
+
 <form action="/signup/" name="register" method="post">
     {% csrf_token %}
     {{ form.as_p }}

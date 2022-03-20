@@ -8,23 +8,17 @@
 </div>
 
 
-<div style="width:100%; overflow: hidden; ">
+<div>
     {% for i in category %}
     <div style="position: relative">
-        <a class="items_catalog" href="{{i.id}}">
-            <div class="product_catalog">
-
-
-                <div class="card" style="width: 18rem;">
-
-                    <div class="card-body">
-                        <h5 class="card-title">{{i.category}}</h5>
-                        <a href="{{i.id}}" class="btn btn-primary">Перейти</a>
-                    </div>
+        <div>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{i.category}}</h5>
+                    <a href="{{i.id}}" class="btn btn-primary">Перейти</a>
                 </div>
-
             </div>
-        </a>
+        </div>
     </div>
     <br>
     {% endfor %}

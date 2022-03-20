@@ -1,5 +1,4 @@
-{% extends 'cart/detail.html' %}
-{% load static %}
+{% extends 'order/detail.html' %}
 {% block title %}
 <title>
     Ваша корзина
@@ -8,7 +7,7 @@
 
 {% block content %}
 <div class = "block-names-product">
-    <h3>Заказ №{{order.id}} на сумму {{order.cost}} рублей успешно оформлен! </h3>
+    <h3>Заказ на сумму {{order.cost}} рублей успешно оформлен. </h3>
 </div>
 <div style="height:100px">
 

@@ -6,8 +6,13 @@
 </title>
 {% endblock %}
 
-{% block content%}
 
+{% block content%}
+<div>
+    <h5>
+        <a href="javascript:history.back()" title="Вернуться на предыдущую страницу"> << </a>
+    </h5>
+</div>
 <div class="card mb-3" style="max-width: 100%;">
     <div class="row g-0">
         <div class="col-md-4">
@@ -15,14 +20,15 @@
         </div>
         <div class="col-md-8">
             <div class="card-body">
-                <h5 class="card-title">{{product.name}}</h5>
-                <span class="gray">Код товара: {{product.id}}</span>
+                <h4 class="card-title">{{product.name}}</h4>
+
                 <div class="features">
-                    <h4>Характеристики:</h4>
-                    <span class="gray">Тип:</span> <span>{{product.category_id.category}}</span><br>
+
+                    <span class="gray">Категория:</span> <span>{{product.category_id.category}}</span><br>
                     <span class="gray">Цвет:</span> <span>{{product.color}}</span><br>
                     <span class="gray">Цена:</span> <span>{{product.price}} руб.</span><br>
                 </div>
+                <br>
                 <h4>Описание:</h4>
                 <p>{{product.description}}
                 </p>

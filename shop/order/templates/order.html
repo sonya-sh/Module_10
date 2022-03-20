@@ -1,5 +1,4 @@
-{% extends 'cart/detail.html' %}
-{% load static %}
+{% extends 'order/detail.html' %}
 {% block title %}
 <title>
     Оформление
@@ -51,14 +50,20 @@
 </table>
 <br>
 <div class="str_order">
-    <form name="order" method="post" action="{% url 'cart:order' %}">
+    <form name="order" method="post" action="{% url 'order:order' %}">
         {% csrf_token %}
         {{ form.as_p }}
         <div>
-
             <div class="d-grid gap-2 col-6 mx-auto">
                 <button class="btn btn-primary" type="submit" value="order">Оформить заказ</button>
             </div>
+
+            <a href="/cart/">
+                <br>
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <button class="btn btn-primary" type="button">Вернуться к корзине</button>
+                </div>
+            </a>
 
         </div>
     </form>

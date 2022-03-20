@@ -3,7 +3,6 @@ from django.contrib.auth.admin import UserAdmin
 
 from .forms import CustomUserCreationForm, CustomUserChangeForm
 from .models import CustomUser
-from django.contrib.auth import get_user_model
 
 
 @admin.register(CustomUser)
@@ -24,7 +23,6 @@ class CustomUserAdmin(UserAdmin):
                     'surname',
                     'email',
                     'phone_number',
-                    'birth_date',
                 )
             }
         )
@@ -39,7 +37,6 @@ class CustomUserAdmin(UserAdmin):
                     'name',
                     'surname',
                     'phone_number',
-                    'birth_date',
                 )
             }
         )

@@ -1,9 +1,6 @@
-from django.http import request
-from django.http.response import HttpResponse
 from django.shortcuts import render
 from .models import Product, Category
 from cart.forms import CartAddProductForm
-import os
 
 
 def product(request):
@@ -13,12 +10,8 @@ def product(request):
 
 def detail(request, category_id, product_id):
     products_code = Product.objects.get(id=product_id)
-
     cart_product_form = CartAddProductForm()
-
-    return render(request, 'product.html', context={'product': products_code,
-
-                                                    'cart_product_form': cart_product_form})
+    return render(request, 'product.html', context={'product': products_code, 'cart_product_form': cart_product_form})
 
 
 def catalog(request, category_id):
