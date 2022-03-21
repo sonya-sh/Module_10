@@ -1,7 +1,7 @@
 {% extends 'base2.html' %}
 {% block content %}
 <div style="height: 500px;">
-    <form name="register" method="post" action="{% url 'login' %}">
+    <form name="register" method="post" action="{% url 'login' %}" autocomplete="off">
         {% csrf_token %}
         <h4> Вход в систему:</h4>
         <br>

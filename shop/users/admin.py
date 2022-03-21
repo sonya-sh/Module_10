@@ -23,6 +23,7 @@ class CustomUserAdmin(UserAdmin):
                     'surname',
                     'email',
                     'phone_number',
+                    'birth_date'
                 )
             }
         )
@@ -37,6 +38,7 @@ class CustomUserAdmin(UserAdmin):
                     'name',
                     'surname',
                     'phone_number',
+                    'birth_date'
                 )
             }
         )

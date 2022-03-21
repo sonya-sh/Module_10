@@ -5,7 +5,7 @@
 <h2>
     Регистрация
 </h2>
-<form action="/signup/" name="register" method="post">
+<form action="/signup/" name="register" method="post" autocomplete="off">
 
     {% csrf_token %}
     {{ form.as_p }}

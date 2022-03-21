@@ -1,5 +1,5 @@
 from .models import CustomUser
-from .forms import RegistrForm
+from .forms import RegistrForm, ChangeProfile, ChangeData1
 from catalog.models import Product
 from order.models import Order
 from django.shortcuts import render
@@ -73,3 +73,42 @@ def detail_order(request, order_id):
     return render(request, 'users/detail_order.html', context={'order': order, 'products': products, 'cart': cart})
 
 
+def change_data1(request):
+    user = CustomUser.objects.get(id=request.user.id)
+    form = ChangeData1()
+    if request.method == "POST":
+        form = ChangeProfile(request.POST)
+        if form.is_valid():
+            data_form = form.cleaned_data
+            if data_form['username']:
+                user.username = data_form['username']
+            if data_form['password_1'] == data_form['password']:
+                if data_form['password']:
+                    user.set_password(data_form['password'])
+            else:
+                context = {'form': form}
+                return render(request, 'users/change_profile_alert.html', context=context)
+            user.save()
+            return render(request, 'users/change_profile_complete.html')
+    context = {'form': form}
+    return render(request, 'users/change_data1.html', context=context)
+
+
+def change_profile(request):
+    user = CustomUser.objects.get(id=request.user.id)
+    form = ChangeProfile()
+    if request.method == "POST":
+        form = ChangeProfile(request.POST)
+        if form.is_valid():
+            data_form = form.cleaned_data
+            if data_form['name']:
+                user.name = data_form['name']
+            if data_form['surname']:
+                user.surname = data_form['surname']
+            if data_form['phone_number']:
+                user.phone_number = data_form['phone_number']
+
+            user.save()
+            return render(request, 'users/change_profile_complete.html')
+    context = {'form': form}
+    return render(request, 'users/change_profile.html', context=context)

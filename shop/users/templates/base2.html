@@ -30,10 +30,16 @@
     <h2>
         Приветствуем вас, {{user.username }} !
     </h2>
+    <p>Имя: {{user.name}}</p>
+    <br>
+    <p>телефон: {{user.phone_number}}</p>
+    <br>
+    <p>Дата рождения: {{user.birth_date}}</p>
     <a href="{% url 'history'%}"><p>
         История заказов
     </p></a>
-
+    <a href="{% url 'change_data1' %}"><p>Изменить логин/пароль</p></a>
+    <a href="{% url 'change_profile' %}"><p>Изменить данные профиля</p></a>
     <a href="{% url 'logout' %}"><p>
         Выйти из аккаунта
     </p></a>
@@ -43,7 +49,7 @@
     <button type="submit" value="Log in" class="btn btn-light">
         <a href="{% url 'login' %}"> Вход </a>
     </button>
-        <button type="submit" value="Log in" class="btn btn-light">
+    <button type="submit" value="Log in" class="btn btn-light">
         <a href="{% url 'sign_up' %}"> Регистрация </a>
     </button>
     {% endif %}
