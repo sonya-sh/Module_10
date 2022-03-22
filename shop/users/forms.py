@@ -8,7 +8,7 @@ class RegistrForm(forms.Form):
     name = forms.CharField(max_length=20, label='Имя')
     surname = forms.CharField(max_length=20, label='Фамилия')
     phone_number = forms.CharField(max_length=20, label='Номер телефона')
-    birth_date = forms.DateField(label="Дата рождения")
+    birth_date = forms.DateField(label="Дата рождения", help_text='YYYY-MM-DD')
     email = forms.EmailField(max_length=254, help_text='This field is required')
     password = forms.CharField(label="Пароль", widget=forms.PasswordInput)
     password_1 = forms.CharField(label="Повторите пароль", widget=forms.PasswordInput)
