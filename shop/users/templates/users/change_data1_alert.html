@@ -1,7 +1,7 @@
 {% extends 'base2.html' %}
 
 {% block content %}
-<form action="/change_profile/" name="profile_update" method="post">
+<form action="/change_data1/" name="profile_update" method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <div class="alert">

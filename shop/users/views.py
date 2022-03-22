@@ -77,7 +77,7 @@ def change_data1(request):
     user = CustomUser.objects.get(id=request.user.id)
     form = ChangeData1()
     if request.method == "POST":
-        form = ChangeProfile(request.POST)
+        form = ChangeData1(request.POST)
         if form.is_valid():
             data_form = form.cleaned_data
             if data_form['username']:
@@ -87,7 +87,7 @@ def change_data1(request):
                     user.set_password(data_form['password'])
             else:
                 context = {'form': form}
-                return render(request, 'users/change_profile_alert.html', context=context)
+                return render(request, 'users/change_data1_alert.html', context=context)
             user.save()
             return render(request, 'users/change_profile_complete.html')
     context = {'form': form}
@@ -107,6 +107,8 @@ def change_profile(request):
                 user.surname = data_form['surname']
             if data_form['phone_number']:
                 user.phone_number = data_form['phone_number']
+            if data_form['email']:
+                user.email = data_form['email']
 
             user.save()
             return render(request, 'users/change_profile_complete.html')
